@@ -6,8 +6,9 @@ from models import User
 
 blue_print = Blueprint("users", __name__, description="CRUD users")
 
-@blue_print.route("/users")
-class Users(MethodView):
+@blue_print.route("/users/db")
+class UserListView(MethodView):
+
     @blue_print.response(200, UserSchema(many=True))
     def get(self):
         users = User.query.all()
@@ -15,8 +16,9 @@ class Users(MethodView):
             abort(404, message="No users found.")
         return users
     
-@blue_print.route("/users/<string:uid>")
-class users(MethodView):
+@blue_print.route("/users/db/<string:uid>")
+class UserDetailView(MethodView):
+
     @blue_print.response(200, UserSchema)
     def get(self, uid):
         user = User.query.get_or_404(uid)
