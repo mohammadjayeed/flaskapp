@@ -9,7 +9,8 @@ blp_json = Blueprint("json_user",__name__, description="CRUD Users")
 
 @blp_json.route("/users/json")
 class UserListCreateViewJSON(MethodView):
-
+    
+    @blp_json.response(200)
     def get(self):
 
 
@@ -41,7 +42,7 @@ class UserListCreateViewJSON(MethodView):
 
 
 
-        return jsonify(data),200
+        return data
 
     @blp_json.arguments(UserPostSchemaJSON)
     @blp_json.response(201, UserPostSchemaJSON)
@@ -53,9 +54,18 @@ class UserListCreateViewJSON(MethodView):
         except json.decoder.JSONDecodeError:
             abort(422)
         
+        # using generator for efficiency 
+        reversed_payload_gen = (item for item in reversed(data)) 
 
-        reversed_payload_gen = (item for item in reversed(data))
-        ordered_payload = {'id': next(reversed_payload_gen)['id']+1}
+        last_index_id =next(reversed_payload_gen)['id'] 
+
+        # extracting the last element's index and adding 1 to replicate database type indexing
+        latest_index_id = last_index_id + 1   
+
+        # Correcting Order
+        ordered_payload = {'id': latest_index_id } 
+
+        # Appending json body with id at the top
         ordered_payload.update(payload)
 
         data.append(ordered_payload)
@@ -63,9 +73,5 @@ class UserListCreateViewJSON(MethodView):
         with open('sample.json', 'w') as file:
             json.dump(data, file, indent=4)
 
-       
-        
-
-        
-        return jsonify(payload),201
+        return payload
 
