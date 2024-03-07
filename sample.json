@@ -1,0 +1,75 @@
+[
+    {
+        "id": 1,
+        "first_name": "Mohammad",
+        "last_name": "Jayeed",
+        "active": true,
+        "company": "Kasablanca",
+        "sex": "M",
+        "contact": {
+            "id": 1,
+            "phone": "34563456",
+            "address": "dfg",
+            "city": "dsfgsdfg",
+            "country": "dfg"
+        },
+        "role": {
+            "id": 1,
+            "name": "Manager"
+        }
+    },
+    {
+        "id": 2,
+        "first_name": "Mohammad",
+        "last_name": "Abdullah",
+        "active": true,
+        "company": "Ugandaya",
+        "sex": "M",
+        "contact": {
+            "id": 2,
+            "phone": "5698745",
+            "address": "dfg",
+            "city": "dfgdf",
+            "country": "dfg"
+        },
+        "role": {
+            "id": 2,
+            "name": "Caretaker"
+        }
+    },
+    {
+        "id": 3,
+        "first_name": "sd",
+        "last_name": "sdf",
+        "active": true,
+        "company": "sdf",
+        "sex": "M",
+        "contact": {
+            "id": 3,
+            "phone": "53425",
+            "address": "dsf",
+            "city": "sdfg",
+            "country": "sadf"
+        },
+        "role": {
+            "id": 3,
+            "name": "Nurse"
+        }
+    },
+    {
+        "id": 4,
+        "first_name": "sd",
+        "last_name": "sdf",
+        "active": true,
+        "company": "sdf",
+        "sex": "M"
+    },
+    {
+        "id": 5,
+        "first_name": "Mohammad",
+        "last_name": "Abul Kashem",
+        "active": false,
+        "company": "NEW",
+        "sex": "M"
+    }
+]

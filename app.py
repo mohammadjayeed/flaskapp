@@ -3,8 +3,8 @@ from flask import Flask
 from flask_smorest import Api
 from db import db
 import models
-from resources.users import blue_print as UserBlueprint
-
+from resources.users_db import blp_db as UserBlueprint
+from resources.users_json import blp_json as UserJSONBlueprint
 
 def create_app(db_url=None):
 
@@ -28,5 +28,6 @@ def create_app(db_url=None):
 
 
     api.register_blueprint(UserBlueprint)
+    api.register_blueprint(UserJSONBlueprint)
 
     return app
