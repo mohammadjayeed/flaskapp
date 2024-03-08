@@ -5,3 +5,4 @@ sqlalchemy
 flask-sqlalchemy
 Flask-DB
 psycopg2-binary
+pymysql
