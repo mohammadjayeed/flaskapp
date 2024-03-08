@@ -1,5 +1,7 @@
 from models import User, Contact, Role
 from db import db
+from sqlalchemy.exc import NoSuchTableError
+user_count = ''
 
 initial_users = [
     {'id': 1,
@@ -133,17 +135,27 @@ roles=[
  {'id': 10, 'name': 'Customer Service Representative', 'user_id': 1}
  ]
 
-for user in initial_users:
-    new_user = User(**user)
-    db.session.add(new_user)
-    db.session.commit()
 
-for contact in user_contacts:
-    new_contact = Contact(**contact)
-    db.session.add(new_contact)
-    db.session.commit()
 
-for role in roles:
-    new_role = Role(**role)
-    db.session.add(new_role)
-    db.session.commit()
+
+try:
+    user_count = db.session.query(User).count()
+except NoSuchTableError:
+    user_count = 0
+
+if user_count == 0:
+    for user in initial_users:
+      new_user = User(**user)
+      db.session.add(new_user)
+      db.session.commit()
+
+    for contact in user_contacts:
+      new_contact = Contact(**contact)
+      db.session.add(new_contact)
+      db.session.commit()
+
+    for role in roles:
+      new_role = Role(**role)
+      db.session.add(new_role)
+      db.session.commit()
+
