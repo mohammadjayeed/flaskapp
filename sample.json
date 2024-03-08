@@ -1,17 +1,74 @@
 [
     {
         "id": 1,
-        "first_name": "Mohammad",
-        "last_name": "Jayeed",
+        "first_name": "Jason",
+        "last_name": "Bailey",
         "active": true,
-        "company": "Kasablanca",
+        "company": "Data Analytics",
         "sex": "M",
         "contact": {
             "id": 1,
-            "phone": "34563456",
-            "address": "dfg",
-            "city": "dsfgsdfg",
-            "country": "dfg"
+            "phone": "+8801878568625",
+            "address": "0250 Diane Alley South Michael, IA 06331",
+            "city": "Sylhet",
+            "country": "Bangladesh"
+        },
+        "role": {
+            "id": 10,
+            "name": "Customer Service Representative"
+        }
+    },
+    {
+        "id": 2,
+        "first_name": "Joseph",
+        "last_name": "Young",
+        "active": false,
+        "company": "Tech Innovations",
+        "sex": "M",
+        "contact": {
+            "id": 2,
+            "phone": "+8801825757177",
+            "address": "79593 Miller Cove Lake Brittanychester, NV 11031",
+            "city": "Comilla",
+            "country": "Bangladesh"
+        },
+        "role": {
+            "id": 8,
+            "name": "Financial Analyst"
+        }
+    },
+    {
+        "id": 3,
+        "first_name": "Elizabeth",
+        "last_name": "Lamb",
+        "active": false,
+        "company": "Pathfinders",
+        "sex": "F",
+        "contact": {
+            "id": 3,
+            "phone": "+8801857615814",
+            "address": "44814 Cooper Mall Lake Karen, IA 14398",
+            "city": "Dhaka",
+            "country": "Bangladesh"
+        },
+        "role": {
+            "id": 6,
+            "name": "Sales Representative"
+        }
+    },
+    {
+        "id": 4,
+        "first_name": "Shawn",
+        "last_name": "Green",
+        "active": true,
+        "company": "Tech Innovations",
+        "sex": "F",
+        "contact": {
+            "id": 4,
+            "phone": "+8801971738813",
+            "address": "6818 Sara Island Apt. 412 Brettchester, NY 28751",
+            "city": "Dhaka",
+            "country": "Bangladesh"
         },
         "role": {
             "id": 1,
@@ -19,57 +76,117 @@
         }
     },
     {
-        "id": 2,
-        "first_name": "Mohammad",
-        "last_name": "Abdullah",
-        "active": true,
-        "company": "Ugandaya",
-        "sex": "M",
-        "contact": {
-            "id": 2,
-            "phone": "5698745",
-            "address": "dfg",
-            "city": "dfgdf",
-            "country": "dfg"
-        },
-        "role": {
-            "id": 2,
-            "name": "Caretaker"
-        }
-    },
-    {
-        "id": 3,
-        "first_name": "sd",
-        "last_name": "sdf",
-        "active": true,
-        "company": "sdf",
-        "sex": "M",
-        "contact": {
-            "id": 3,
-            "phone": "53425",
-            "address": "dsf",
-            "city": "sdfg",
-            "country": "sadf"
-        },
-        "role": {
-            "id": 3,
-            "name": "Nurse"
-        }
-    },
-    {
-        "id": 4,
-        "first_name": "sd",
-        "last_name": "sdf",
-        "active": true,
-        "company": "sdf",
-        "sex": "M"
-    },
-    {
         "id": 5,
-        "first_name": "Mohammad",
-        "last_name": "Abul Kashem",
+        "first_name": "Robert",
+        "last_name": "Miller",
         "active": false,
-        "company": "NEW",
-        "sex": "M"
+        "company": "Global Corp",
+        "sex": "F",
+        "contact": {
+            "id": 5,
+            "phone": "+8801923888906",
+            "address": "8407 Helen Lock Stephenberg, KY 77556",
+            "city": "Khulna",
+            "country": "Bangladesh"
+        },
+        "role": {
+            "id": 5,
+            "name": "Product Manager"
+        }
+    },
+    {
+        "id": 6,
+        "first_name": "Kristen",
+        "last_name": "Snyder",
+        "active": true,
+        "company": "Pathfinders",
+        "sex": "F",
+        "contact": {
+            "id": 6,
+            "phone": "+8801959952974",
+            "address": "45536 Shannon Street Apt. 028 New Johnland, CO 55240",
+            "city": "Chittagong",
+            "country": "Bangladesh"
+        },
+        "role": {
+            "id": 9,
+            "name": "Marketing Coordinator"
+        }
+    },
+    {
+        "id": 7,
+        "first_name": "Linda",
+        "last_name": "Mayer",
+        "active": false,
+        "company": "Data Analytics",
+        "sex": "F",
+        "contact": {
+            "id": 7,
+            "phone": "+8801984576756",
+            "address": "65313 Kenneth Springs Arellanoshire, VA 08510",
+            "city": "Sylhet",
+            "country": "Bangladesh"
+        },
+        "role": {
+            "id": 4,
+            "name": "Quality Assurance Analyst"
+        }
+    },
+    {
+        "id": 8,
+        "first_name": "Stephen",
+        "last_name": "Bush",
+        "active": true,
+        "company": "NextGen",
+        "sex": "F",
+        "contact": {
+            "id": 8,
+            "phone": "+8801701081440",
+            "address": "565 Castillo Isle West Scott, ND 54988",
+            "city": "Sylhet",
+            "country": "Bangladesh"
+        },
+        "role": {
+            "id": 7,
+            "name": "Human Resources Specialist"
+        }
+    },
+    {
+        "id": 9,
+        "first_name": "Kyle",
+        "last_name": "Salinas",
+        "active": true,
+        "company": "Kasablanca",
+        "sex": "M",
+        "contact": {
+            "id": 9,
+            "phone": "+8801781137713",
+            "address": "63798 Hahn Manor Suite 958 Lewisborough, GA 99922",
+            "city": "Sylhet",
+            "country": "Bangladesh"
+        },
+        "role": {
+            "id": 2,
+            "name": "Team Lead"
+        }
+    },
+    {
+        "id": 10,
+        "first_name": "Frances",
+        "last_name": "Aguilar",
+        "active": false,
+        "company": "NextGen",
+        "sex": "M",
+        "contact": {
+            "id": 10,
+            "phone": "+8801894665223",
+            "address": "023 Rita Spring Suite 950 Lake Kristina, MI 50539",
+            "city": "Rajshahi",
+            "country": "Bangladesh"
+        },
+        "role": {
+            "id": 3,
+            "name": "Software Engineer"
+        }
     }
 ]

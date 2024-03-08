@@ -32,7 +32,7 @@ class UserPostSchemaJSON(Schema):
     company = fields.Str(required=True)
     sex = fields.Str(validate=lambda x: x in ['M', 'F'], required=True)
 
-class UserGetSchemaJSON(Schema):
+class UserGetUpdateSchemaJSON(Schema):
     
     id = fields.Int(required=False)
     first_name = fields.Str(required=True)
@@ -40,3 +40,4 @@ class UserGetSchemaJSON(Schema):
     active = fields.Bool(required=True)
     company = fields.Str(required=True)
     sex = fields.Str(validate=lambda x: x in ['M', 'F'], required=True)
+
