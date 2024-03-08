@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "first_name": "Jason",
+        "first_name": "Jessica",
         "last_name": "Bailey",
         "active": true,
         "company": "Data Analytics",
@@ -44,17 +44,8 @@
         "active": false,
         "company": "Pathfinders",
         "sex": "F",
-        "contact": {
-            "id": 3,
-            "phone": "+8801857615814",
-            "address": "44814 Cooper Mall Lake Karen, IA 14398",
-            "city": "Dhaka",
-            "country": "Bangladesh"
-        },
-        "role": {
-            "id": 6,
-            "name": "Sales Representative"
-        }
+        "contact": null,
+        "role": null
     },
     {
         "id": 4,
@@ -120,17 +111,8 @@
         "active": false,
         "company": "Data Analytics",
         "sex": "F",
-        "contact": {
-            "id": 7,
-            "phone": "+8801984576756",
-            "address": "65313 Kenneth Springs Arellanoshire, VA 08510",
-            "city": "Sylhet",
-            "country": "Bangladesh"
-        },
-        "role": {
-            "id": 4,
-            "name": "Quality Assurance Analyst"
-        }
+        "contact": null,
+        "role": null
     },
     {
         "id": 8,
@@ -158,17 +140,8 @@
         "active": true,
         "company": "Kasablanca",
         "sex": "M",
-        "contact": {
-            "id": 9,
-            "phone": "+8801781137713",
-            "address": "63798 Hahn Manor Suite 958 Lewisborough, GA 99922",
-            "city": "Sylhet",
-            "country": "Bangladesh"
-        },
-        "role": {
-            "id": 2,
-            "name": "Team Lead"
-        }
+        "contact": null,
+        "role": null
     },
     {
         "id": 10,

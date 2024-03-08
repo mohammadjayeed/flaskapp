@@ -23,7 +23,8 @@ class UserSchema(Schema):
     contact = fields.Nested(SimpleContactSchema)
     role = fields.Nested(SimpleRoleSchema)
 
-class UserPostSchemaJSON(Schema):
+
+class UserPostUpdateSchemaJSON(Schema):
     
     id = fields.Int(dump_only=True)
     first_name = fields.Str(required=True)
@@ -31,8 +32,14 @@ class UserPostSchemaJSON(Schema):
     active = fields.Bool(required=True)
     company = fields.Str(required=True)
     sex = fields.Str(validate=lambda x: x in ['M', 'F'], required=True)
+    contact = fields.Raw(allow_none=True)
+    role = fields.Raw(allow_none=True)
 
-class UserGetUpdateSchemaJSON(Schema):
+    class Meta:
+        
+        exclude = ('contact', 'role')
+
+class UserGetSchemaJSON(Schema):
     
     id = fields.Int(required=False)
     first_name = fields.Str(required=True)
@@ -41,3 +48,14 @@ class UserGetUpdateSchemaJSON(Schema):
     company = fields.Str(required=True)
     sex = fields.Str(validate=lambda x: x in ['M', 'F'], required=True)
 
+
+class ContactCreateSchema(Schema):
+    id = fields.Int(dump_only=True)
+    phone = fields.Str(required=True)
+    address = fields.Str(required=True)
+    city = fields.Str(required=True)
+    country = fields.Str(required=True)
+
+class RoleCreateSchema(Schema):
+    id = fields.Int(dump_only=True)
+    name = fields.Str(required=True)

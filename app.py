@@ -4,7 +4,8 @@ from flask_smorest import Api
 from db import db
 import models
 from resources.users_db import blp_db as UserBlueprint
-from resources.users_json import blp_json as UserJSONBlueprint
+from resources.users_json import blp_json as UserJSONBlueprint 
+from resources.users_json_child import blp_json_child as UserJSONBlueprintNested
 
 def create_app(db_url=None):
 
@@ -30,5 +31,6 @@ def create_app(db_url=None):
 
     api.register_blueprint(UserBlueprint)
     api.register_blueprint(UserJSONBlueprint)
+    api.register_blueprint(UserJSONBlueprintNested, url_prefix='/users/json')
 
     return app

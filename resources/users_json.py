@@ -2,10 +2,12 @@ import json
 from flask import request, jsonify, make_response
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
-from schemas import SimpleContactSchema, SimpleRoleSchema, UserPostSchemaJSON, UserGetUpdateSchemaJSON 
+from schemas import SimpleContactSchema, SimpleRoleSchema, UserPostUpdateSchemaJSON,  UserGetSchemaJSON
 from models import User
 
 blp_json = Blueprint("json_users",__name__, description="CRUD Users")
+
+
 
 @blp_json.route("/users/json")
 class UserListCreate(MethodView):
@@ -32,7 +34,7 @@ class UserListCreate(MethodView):
                 if errors:
                     return errors, 422
                 
-            errors  = UserGetUpdateSchemaJSON().validate(item)
+            errors  =  UserGetSchemaJSON().validate(item)
             if errors:
                     return errors, 422
             
@@ -44,15 +46,15 @@ class UserListCreate(MethodView):
 
         return data
 
-    @blp_json.arguments(UserPostSchemaJSON)
-    @blp_json.response(201, UserPostSchemaJSON)
+    @blp_json.arguments( UserPostUpdateSchemaJSON)
+    @blp_json.response(201,  UserPostUpdateSchemaJSON)
     def post(self, payload):
 
         try:
             with open('sample.json', 'r') as file:
                 data = json.load(file)
         except json.decoder.JSONDecodeError:
-            abort(422)
+            return make_response(jsonify({'message': 'Invalid JSON'}), 422)
         
         # using generator for efficiency 
         reversed_data_gen = (item for item in reversed(data)) 
@@ -68,6 +70,10 @@ class UserListCreate(MethodView):
         # Appending json body with id at the top
         ordered_payload.update(payload)
 
+        # Setting Contact and Role to be None so that they can be created later inside the json file
+        ordered_payload.setdefault('contact', None)
+        ordered_payload.setdefault('role', None)
+
         data.append(ordered_payload)
 
         with open('sample.json', 'w') as file:
@@ -77,7 +83,7 @@ class UserListCreate(MethodView):
 
 @blp_json.route("/users/json/<string:uid>")
 class UserRetrieveUpdateDelete(MethodView):
-    
+
     @blp_json.response(200)
     def get(self, uid):
         retrieved_data = {}
@@ -107,7 +113,7 @@ class UserRetrieveUpdateDelete(MethodView):
                     if errors:
                         return errors, 422
                     
-                errors  = UserGetUpdateSchemaJSON().validate(retrieved_data)
+                errors  =  UserGetSchemaJSON().validate(retrieved_data)
                 if errors:
                         return errors, 422
             
@@ -122,8 +128,8 @@ class UserRetrieveUpdateDelete(MethodView):
        
 
 
-    @blp_json.arguments(UserGetUpdateSchemaJSON)
-    @blp_json.response(200,UserGetUpdateSchemaJSON)
+    @blp_json.arguments(UserPostUpdateSchemaJSON)
+    @blp_json.response(200,UserPostUpdateSchemaJSON)
     def put(self, payload, uid):
         
         try:
@@ -168,10 +174,12 @@ class UserRetrieveUpdateDelete(MethodView):
                 break
         
         else:
-            abort(404, 'No such entry exists')
+            return make_response(jsonify({'message': 'No such entry exists'}), 404)
 
 
         with open('sample.json', 'w') as file:
             json.dump(data, file, indent=4)
 
         return {"message":"Entry Deleted."}
+    
+
