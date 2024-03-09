@@ -3,16 +3,15 @@ from flask import request, jsonify, make_response
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from schemas import SimpleContactSchema, SimpleRoleSchema, UserPostUpdateSchemaJSON,  UserGetSchemaJSON
-from models import User
 
-blp_json = Blueprint("json_users",__name__, description="CRUD Users")
-
+blp = Blueprint("json_users",__name__, description="CRUD Users")
 
 
-@blp_json.route("/users/json")
+
+@blp.route("/users/json")
 class UserListCreate(MethodView):
     
-    @blp_json.response(200)
+    @blp.response(200)
     def get(self):
 
 
@@ -46,8 +45,8 @@ class UserListCreate(MethodView):
 
         return data
 
-    @blp_json.arguments( UserPostUpdateSchemaJSON)
-    @blp_json.response(201,  UserPostUpdateSchemaJSON)
+    @blp.arguments( UserPostUpdateSchemaJSON)
+    @blp.response(201,  UserPostUpdateSchemaJSON)
     def post(self, payload):
 
         try:
@@ -81,10 +80,10 @@ class UserListCreate(MethodView):
 
         return payload
 
-@blp_json.route("/users/json/<string:uid>")
+@blp.route("/users/json/<int:uid>")
 class UserRetrieveUpdateDelete(MethodView):
 
-    @blp_json.response(200)
+    @blp.response(200)
     def get(self, uid):
         retrieved_data = {}
         try:
@@ -97,7 +96,7 @@ class UserRetrieveUpdateDelete(MethodView):
         
         # for else loop for checking existence of entry
         for index,entry in enumerate(current_data_gen):
-            if entry['id'] == int(uid):
+            if entry['id'] == uid:
                 retrieved_data = data[index]
                 contact = retrieved_data.pop('contact',None)
                 role = retrieved_data.pop('role',None)
@@ -128,8 +127,8 @@ class UserRetrieveUpdateDelete(MethodView):
        
 
 
-    @blp_json.arguments(UserPostUpdateSchemaJSON)
-    @blp_json.response(200,UserPostUpdateSchemaJSON)
+    @blp.arguments(UserPostUpdateSchemaJSON)
+    @blp.response(200,UserPostUpdateSchemaJSON)
     def put(self, payload, uid):
         
         try:
@@ -142,7 +141,7 @@ class UserRetrieveUpdateDelete(MethodView):
         
         # for else loop for checking existence of entry
         for entry in current_data_gen:
-            if entry['id'] == int(uid):
+            if entry['id'] == uid:
                 entry.update(payload)
                 break
 
@@ -169,7 +168,7 @@ class UserRetrieveUpdateDelete(MethodView):
 
         # for else loop for checking existence of entry
         for index,entry in enumerate(current_data_gen):
-            if entry['id'] == int(uid):
+            if entry['id'] == uid:
                 data.pop(index)
                 break
         

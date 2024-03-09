@@ -6,13 +6,13 @@ from schemas import ContactCreateSchema, RoleCreateSchema
 
 
 
-blp_json_child = Blueprint('contact, role',__name__, url_prefix='/contact', description="Create Contact and Role For JSON User")
+blp = Blueprint('contact, role',__name__, url_prefix='/contact', description="Create Contact and Role For JSON User")
 
-@blp_json_child.route("/<string:uid>/contact")
+@blp.route("/<int:uid>/contact")
 class UserContactCreate(MethodView):
 
-    @blp_json_child.arguments(ContactCreateSchema)
-    @blp_json_child.response(201,ContactCreateSchema)
+    @blp.arguments(ContactCreateSchema)
+    @blp.response(201,ContactCreateSchema)
     def post(self, payload , uid):
         
         try:
@@ -26,7 +26,7 @@ class UserContactCreate(MethodView):
 
         # for else loop for checking existence of entry
         for index,entry in enumerate(current_data_gen):
-            if entry['id'] == int(uid):
+            if entry['id'] == uid:
                 if not data[index]['contact']:
                     data[index].pop('contact')
                     role = data[index].pop('role')
@@ -52,11 +52,11 @@ class UserContactCreate(MethodView):
         return payload
     
 
-@blp_json_child.route("/<string:uid>/role")
+@blp.route("/<int:uid>/role")
 class UserRoleCreate(MethodView):
 
-    @blp_json_child.arguments(RoleCreateSchema)
-    @blp_json_child.response(201,RoleCreateSchema)
+    @blp.arguments(RoleCreateSchema)
+    @blp.response(201,RoleCreateSchema)
     def post(self, payload , uid):
         
         try:
@@ -70,7 +70,7 @@ class UserRoleCreate(MethodView):
 
         # for else loop for checking existence of entry
         for index,entry in enumerate(current_data_gen):
-            if entry['id'] == int(uid):
+            if entry['id'] == uid:
                 if not data[index]['role']:
 
                     data_gen = (item['role']['id'] for item in data if item['role'] is not None ) 

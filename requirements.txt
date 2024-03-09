@@ -4,5 +4,6 @@ python-dotenv
 sqlalchemy
 flask-sqlalchemy
 Flask-DB
-psycopg2-binary
 pymysql
+flask-jwt-extended
+passlib
