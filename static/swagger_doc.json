@@ -362,6 +362,7 @@
     }
   },
   "info": {
+    "description": "Project by Mohammad Jayeed",
     "title": "User Data REST API",
     "version": "v1"
   },

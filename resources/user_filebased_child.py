@@ -3,14 +3,14 @@ from flask import jsonify, make_response
 from flask.views import MethodView
 from flask_smorest import Blueprint
 from schemas import ContactCreateSchema, RoleCreateSchema
-
+from flask_jwt_extended import jwt_required
 
 
 blp = Blueprint('contact, role',__name__, url_prefix='/contact', description="Create Contact and Role For JSON User")
 
 @blp.route("/<int:uid>/contact")
 class UserContactCreate(MethodView):
-
+    
     @blp.arguments(ContactCreateSchema)
     @blp.response(201,ContactCreateSchema)
     def post(self, payload , uid):

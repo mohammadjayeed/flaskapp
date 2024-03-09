@@ -3,14 +3,15 @@ from flask import request, jsonify, make_response
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from schemas import SimpleContactSchema, SimpleRoleSchema, UserPostUpdateSchemaJSON,  UserGetSchemaJSON
+from flask_jwt_extended import jwt_required
 
 blp = Blueprint("json_users",__name__, description="CRUD Users")
-
 
 
 @blp.route("/users/json")
 class UserListCreate(MethodView):
     
+    @jwt_required()
     @blp.response(200)
     def get(self):
 
@@ -45,6 +46,7 @@ class UserListCreate(MethodView):
 
         return data
 
+    @jwt_required()
     @blp.arguments( UserPostUpdateSchemaJSON)
     @blp.response(201,  UserPostUpdateSchemaJSON)
     def post(self, payload):
@@ -83,6 +85,7 @@ class UserListCreate(MethodView):
 @blp.route("/users/json/<int:uid>")
 class UserRetrieveUpdateDelete(MethodView):
 
+    @jwt_required()
     @blp.response(200)
     def get(self, uid):
         retrieved_data = {}
@@ -126,7 +129,7 @@ class UserRetrieveUpdateDelete(MethodView):
         return retrieved_data
        
 
-
+    @jwt_required()
     @blp.arguments(UserPostUpdateSchemaJSON)
     @blp.response(200,UserPostUpdateSchemaJSON)
     def put(self, payload, uid):
@@ -155,7 +158,7 @@ class UserRetrieveUpdateDelete(MethodView):
 
         return payload
     
-    
+    @jwt_required()
     def delete(self, uid):
         
         try:

@@ -6,6 +6,9 @@ from flask import make_response, jsonify
 from db import db
 from models import AdminUserModel
 from schemas import AdminUserSchema
+from datetime import timedelta
+
+
 
 blp = Blueprint("Admin",__name__, description="Authenticate Users" )
 
@@ -49,7 +52,8 @@ class AdminUserLogin(MethodView):
         ).first()
 
         if user and pbkdf2_sha256.verify(data["password"], user.password):
-            access_token = create_access_token(identity=user.id) # {'user':user.id, 'username':user.username}
+            expires = timedelta(minutes=45)
+            access_token = create_access_token(identity=user.id, expires_delta=expires) # {'user':user.id, 'username':user.username}
             return make_response(jsonify({'access_token': access_token}), 200)
 
         return make_response(jsonify({'message': 'Invalid Credentials'}), 401)
