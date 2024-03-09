@@ -1,6 +1,5 @@
 FROM python:3.10.13-slim
 ENV PYTHONBUFFERED=1
-EXPOSE 5000
 WORKDIR /flaskapp
 COPY requirements.txt .
 RUN pip install -r requirements.txt

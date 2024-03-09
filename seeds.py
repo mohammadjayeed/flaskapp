@@ -9,7 +9,7 @@ initial_users = [
   'last_name': 'Bailey',
   'active': True,
   'company': 'Data Analytics',
-  'sex': 'M'},
+  'sex': 'F'},
  {'id': 2,
   'first_name': 'Joseph',
   'last_name': 'Young',
@@ -27,13 +27,13 @@ initial_users = [
   'last_name': 'Green',
   'active': True,
   'company': 'Tech Innovations',
-  'sex': 'F'},
+  'sex': 'M'},
  {'id': 5,
   'first_name': 'Robert',
   'last_name': 'Miller',
   'active': False,
   'company': 'Global Corp',
-  'sex': 'F'},
+  'sex': 'M'},
  {'id': 6,
   'first_name': 'Kristen',
   'last_name': 'Snyder',
@@ -51,7 +51,7 @@ initial_users = [
   'last_name': 'Bush',
   'active': True,
   'company': 'NextGen',
-  'sex': 'F'},
+  'sex': 'M'},
  {'id': 9,
   'first_name': 'Kyle',
   'last_name': 'Salinas',
@@ -143,19 +143,27 @@ try:
 except NoSuchTableError:
     user_count = 0
 
+db.session.close()
+
 if user_count == 0:
-    for user in initial_users:
-      new_user = User(**user)
-      db.session.add(new_user)
-      db.session.commit()
-
-    for contact in user_contacts:
-      new_contact = Contact(**contact)
-      db.session.add(new_contact)
-      db.session.commit()
-
-    for role in roles:
-      new_role = Role(**role)
-      db.session.add(new_role)
-      db.session.commit()
+  try:
+          
+      with db.session.begin():
+          for user_data in initial_users:
+              new_user = User(**user_data)
+              db.session.add(new_user)
+              
+          for contact_data in user_contacts:
+              new_contact = Contact(**contact_data)
+              db.session.add(new_contact)
+              
+          for role_data in roles:
+              new_role = Role(**role_data)
+              db.session.add(new_role)
+  except Exception as e:
+      
+      db.session.rollback()
+      raise e  
+  db.session.commit()
+db.session.close()
 

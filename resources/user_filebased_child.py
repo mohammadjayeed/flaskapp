@@ -6,6 +6,7 @@ from schemas import ContactCreateSchema, RoleCreateSchema
 from flask_jwt_extended import jwt_required
 
 
+
 blp = Blueprint('contact, role',__name__, url_prefix='/contact', description="Create Contact and Role For JSON User")
 
 @blp.route("/<int:uid>/contact")

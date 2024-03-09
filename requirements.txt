@@ -6,4 +6,5 @@ flask-sqlalchemy
 Flask-DB
 pymysql
 flask-jwt-extended
-passlib
+flask-swagger-ui
+Werkzeug

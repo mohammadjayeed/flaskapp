@@ -1,15 +1,37 @@
-### Docker instructions
-
+### Local Run Instructions
+Clone the project and run the following commands in the terminal
 ```bash 
-docker build -t ${any_name} . 
+python -m venv venv 
+```
+Activate the virtual environment
+```bash 
+source venv/bin/activate OR .\venv\Scripts\activate
+```
+Install Dependencies
+```bash 
+pip install -r requirements.txt 
+```
+Seed Database
+```bash 
+flask db seed 
+Run the App
 ```
 ```bash 
-docker run -dp 5000:5000 ${name_given_in_the_previous_command} 
+flask run
+```
+We can now access and perform actions via 
+```bash 
+127.0.0.1:5000/swagger-ui
 ```
 
-### Enter the Container
+
+
+### One-liner Docker instruction 
+The below command will start two containers one for flask and another for mysql,
+It will also populate the database in the container. Please check [127.0.0.1:5005/swagger-ui](127.0.0.1:5005/swagger-ui)
+after the containers have started.
 ```bash
-docker exec -it ${container_name/id} /bin/bash
+docker-compose up
 ```
 
 ### Project Sample
