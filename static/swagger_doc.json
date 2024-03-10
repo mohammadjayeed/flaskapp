@@ -390,7 +390,8 @@
     }
   },
   "info": {
-    "title": "Stores REST API",
+    "description": "Project by Mohammad Jayeed",
+    "title": "User Data REST API",
     "version": "v1"
   },
   "tags": [
@@ -412,7 +413,7 @@
     },
     {
       "name": "Search",
-      "description": "Search by first_name | company | country | Role Name"
+      "description": "Search From Database by first_name | company | country | Role Name (not linked with json file)"
     }
   ],
   "openapi": "3.0.3",
@@ -632,7 +633,7 @@
       "Search": {
         "type": "object",
         "properties": {
-          "term": {
+          "keyword": {
             "type": "string"
           }
         }

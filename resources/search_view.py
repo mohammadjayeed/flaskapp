@@ -8,7 +8,7 @@ from marshmallow import Schema, fields
 from schemas import SearchSchema
 
 
-blp = Blueprint("Search",__name__, description="Search by first_name | company | country | Role Name" )
+blp = Blueprint("Search",__name__, description="Search From Database by first_name | company | country | Role Name" )
 
 
 @blp.route("/search")
@@ -24,10 +24,10 @@ class SearchView(MethodView):
         join(Role).\
         filter(
             or_(
-                User.first_name.contains(data['term']),
-                User.company.contains(data['term']),
-                Contact.country.contains(data['term']),
-                Role.name.contains(data['term'])
+                User.first_name.contains(data['keyword']),
+                User.company.contains(data['keyword']),
+                Contact.country.contains(data['keyword']),
+                Role.name.contains(data['keyword'])
             )
         ).all()
     

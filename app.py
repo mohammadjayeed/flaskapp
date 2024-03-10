@@ -34,6 +34,8 @@ def create_app(db_url=None):
 
     )
     app.register_blueprint(SWAGGER_BLUEPRINT, url_prefix = SWAGGER_URL)
+
+    
     app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv("DATABASE_URL",  'sqlite:///data.db' )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["FLASK_DB_SEEDS_PATH"] = os.path.join(os.getcwd(), 'seeds.py')

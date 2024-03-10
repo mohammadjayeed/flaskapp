@@ -30,7 +30,7 @@ class UserSchema(Schema):
 
 
 class SearchSchema(Schema):
-    term = fields.Str()
+    keyword = fields.Str()
 
 
 

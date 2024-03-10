@@ -47,8 +47,8 @@ class UserListCreate(MethodView):
         return data
 
     @jwt_required()
-    @blp.arguments( UserPostUpdateSchemaJSON)
-    @blp.response(201,  UserPostUpdateSchemaJSON)
+    @blp.arguments(UserPostUpdateSchemaJSON)
+    @blp.response(201)
     def post(self, payload):
 
         try:
@@ -66,21 +66,24 @@ class UserListCreate(MethodView):
         latest_index_id = last_index_id + 1   
 
         # Correcting Order
-        ordered_payload = {'id': latest_index_id } 
+        ordered_payload = {'id': latest_index_id }
+        
 
         # Appending json body with id at the top
         ordered_payload.update(payload)
+
+        new_payload = ordered_payload.copy()
 
         # Setting Contact and Role to be None so that they can be created later inside the json file
         ordered_payload.setdefault('contact', None)
         ordered_payload.setdefault('role', None)
 
         data.append(ordered_payload)
-
+        
         with open('sample.json', 'w') as file:
             json.dump(data, file, indent=4)
 
-        return payload
+        return new_payload
 
 @blp.route("/users/json/<int:uid>")
 class UserRetrieveUpdateDelete(MethodView):
