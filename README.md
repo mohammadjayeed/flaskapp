@@ -26,11 +26,14 @@ We can now access and perform actions via
 ```
 ### One-liner Docker instruction 
 The below command will start two containers one for flask and another for mysql,
-It will also populate the database in the container. Please check [127.0.0.1:5005/swagger-ui](http://127.0.0.1:5005/swagger-ui)
+It will also populate the database in the container. Please check **[127.0.0.1:5005/swagger-ui](http://127.0.0.1:5005/swagger-ui)**
 after the containers have started. 
 ```bash
 docker-compose up
 ```
+##### Side Note
+- User creation Flow : Create User, Create User Contact , Create User Role
+- For authentication through Swagger UI, place the jwt token inside the auth box without quotes
 ### Notes
 For any further data modification, please add or change data inside either
 JSON
