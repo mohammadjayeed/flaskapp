@@ -1,5 +1,10 @@
 from marshmallow import Schema, fields
 
+class AdminUserSchema(Schema):
+    id = fields.Int(dump_only=True)
+    username = fields.Str(required=True)
+    password = fields.Str(required=True, load_only=True)
+
 
 class SimpleContactSchema(Schema):
     id = fields.Int()
@@ -22,6 +27,11 @@ class UserSchema(Schema):
     sex = fields.Str(validate=lambda x: x in ['M', 'F'], required=True)
     contact = fields.Nested(SimpleContactSchema)
     role = fields.Nested(SimpleRoleSchema)
+
+
+class SearchSchema(Schema):
+    term = fields.Str()
+
 
 
 class UserPostUpdateSchemaJSON(Schema):
@@ -49,19 +59,13 @@ class UserGetSchemaJSON(Schema):
     sex = fields.Str(validate=lambda x: x in ['M', 'F'], required=True)
 
 
-class ContactCreateSchema(Schema):
+class ContactCreateSchemaJSON(Schema):
     id = fields.Int(dump_only=True)
     phone = fields.Str(required=True)
     address = fields.Str(required=True)
     city = fields.Str(required=True)
     country = fields.Str(required=True)
 
-class RoleCreateSchema(Schema):
+class RoleCreateSchemaJSON(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str(required=True)
-
-
-class AdminUserSchema(Schema):
-    id = fields.Int(dump_only=True)
-    username = fields.Str(required=True)
-    password = fields.Str(required=True, load_only=True)

@@ -1,4 +1,3 @@
-import bcrypt
 from flask.views import MethodView
 from flask_smorest import Blueprint
 from flask_jwt_extended import create_access_token

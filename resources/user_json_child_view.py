@@ -2,7 +2,7 @@ import json
 from flask import jsonify, make_response
 from flask.views import MethodView
 from flask_smorest import Blueprint
-from schemas import ContactCreateSchema, RoleCreateSchema
+from schemas import ContactCreateSchemaJSON, RoleCreateSchemaJSON
 from flask_jwt_extended import jwt_required
 
 
@@ -12,8 +12,9 @@ blp = Blueprint('contact, role',__name__, url_prefix='/contact', description="Cr
 @blp.route("/<int:uid>/contact")
 class UserContactCreate(MethodView):
     
-    @blp.arguments(ContactCreateSchema)
-    @blp.response(201,ContactCreateSchema)
+    @jwt_required()
+    @blp.arguments(ContactCreateSchemaJSON)
+    @blp.response(201,ContactCreateSchemaJSON)
     def post(self, payload , uid):
         
         try:
@@ -44,7 +45,7 @@ class UserContactCreate(MethodView):
                     break
 
                 else:
-                    return make_response(jsonify({'message': 'contact already there'}), 422)
+                    return make_response(jsonify({'message': 'contact already there, you can try with id 3,7 and 9 for inital testing purpose'}), 422)
                 
         
         else:
@@ -56,8 +57,9 @@ class UserContactCreate(MethodView):
 @blp.route("/<int:uid>/role")
 class UserRoleCreate(MethodView):
 
-    @blp.arguments(RoleCreateSchema)
-    @blp.response(201,RoleCreateSchema)
+    @jwt_required()
+    @blp.arguments(RoleCreateSchemaJSON)
+    @blp.response(201,RoleCreateSchemaJSON)
     def post(self, payload , uid):
         
         try:
@@ -101,7 +103,7 @@ class UserRoleCreate(MethodView):
                     break
 
                 else:
-                    return make_response(jsonify({'message': 'contact already there'}), 422)
+                    return make_response(jsonify({'message': 'Role already there, you can try with id 3,7 and 9 for inital testing purpose'}), 422)
                 
         
         else:
