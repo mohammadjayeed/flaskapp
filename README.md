@@ -34,6 +34,18 @@ after the containers have started.
 ```bash
 docker-compose up
 ```
+### Notes
+For any further data modification, please add or change data inside either
+JSON
+```bash
+sample.json
+```
+OR
+
+Database
+```bash
+seeds.py
+```
 
 ### Project Sample
 <img src="images/Untitled.png" >
